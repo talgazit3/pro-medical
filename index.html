@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדיקל פרו | מרכז רפואי רב-תחומי</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2a52be;
+            --secondary: #48cae4;
+            --dark: #1d3557;
+            --light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+        body { font-family: 'Assistant', sans-serif; margin: 0; background: var(--light); color: var(--dark); overflow-x: hidden; }
+
+        /* Navigation */
+        nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 26px; font-weight: 800; color: var(--primary); cursor: pointer; display: flex; align-items: center; gap: 10px; }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 700; cursor: pointer; transition: 0.3s; position: relative; }
+        .nav-links a::after { content: ''; width: 0; height: 2px; background: var(--primary); position: absolute; bottom: -5px; left: 0; transition: 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Page Management */
+        .page { display: none; min-height: 100vh; }
+        .page.active { display: block; }
+
+        /* Hero Section */
+        .hero { height: 90vh; background: linear-gradient(135deg, rgba(29,53,87,0.8) 0%, rgba(42,82,190,0.6) 100%), url('https://cdn.pixabay.com/photo/2016/11/21/12/42/urgent-care-1845147_1280.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white; text-align: center; border-radius: 0 0 100px 0; }
+        .hero-content h1 { font-size: 4.5rem; margin: 0; line-height: 1.1; }
+        .hero-content p { font-size: 1.5rem; margin: 20px 0 40px; opacity: 0.9; }
+
+        /* Buttons */
+        .btn { padding: 15px 35px; border-radius: 50px; font-weight: 800; text-decoration: none; transition: 0.4s; cursor: pointer; border: none; font-size: 1.1rem; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(42,82,190,0.3); }
+        .btn-primary:hover { transform: scale(1.05); background: var(--dark); }
+
+        /* Home Scroll Sections */
+        .section-padding { padding: 100px 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .info-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; text-align: center; }
+        .info-card:hover { transform: translateY(-15px); }
+        .info-card i { font-size: 3.5rem; color: var(--secondary); margin-bottom: 20px; }
+
+        /* Team Section */
+        .doctor-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .doctor-img { width: 100%; height: 350px; object-fit: cover; }
+        .doctor-info { padding: 25px; text-align: center; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 80px 10% 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            nav { padding: 15px 5%; }
+            .nav-links { display: none; } /* במציאות כאן בונים תפריט המבורגר */
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="showPage('home')"><i class="fas fa-heartbeat"></i> MEDICAL<span>PRO</span></div>
+        <div class="nav-links">
+            <a onclick="showPage('home')">בית</a>
+            <a onclick="showPage('about')">אודות המרכז</a>
+            <a onclick="showPage('services')">מחלקות ושירותים</a>
+            <a onclick="showPage('team')">הרופאים שלנו</a>
+            <a onclick="showPage('contact')">צור קשר</a>
+        </div>
+    </nav>
+
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content" data-aos="zoom-in">
+                <h1>הבריאות שלך היא<br>השליחות שלנו</h1>
+                <p>המרכז הרפואי המוביל בישראל לשירותי רפואה דחופים וייעוץ מומחים</p>
+                <button class="btn btn-primary" onclick="showPage('contact')">קביעת תור מהיר</button>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="grid">
+                <div class="info-card" data-aos="fade-up">
+                    <i class="fas fa-user-md"></i>
+                    <h3>רופאים מומחים</h3>
+                    <p>מעל 120 רופאים בכירים בכל תחומי הרפואה תחת קורת גג אחת.</p>
+                </div>
+                <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-microscope"></i>
+                    <h3>מעבדות מתקדמות</h3>
+                    <p>פענוח תוצאות מהיר ומדויק בעזרת הטכנולוגיות החדשות בעולם.</p>
+                </div>
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-ambulance"></i>
+                    <h3>מיון 24/7</h3>
+                    <p>מענה רפואי דחוף ללא הפסקה, כולל סופי שבוע וחגים.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background: white;">
+            <div style="display: flex; gap: 50px; flex-wrap: wrap; align-items: center;">
+                <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
+                    <img src="https://cdn.pixabay.com/photo/2014/12/10/20/56/medical-563427_1280.jpg" style="width: 100%; border-radius: 30px; box-shadow: 20px 20px 0 var(--secondary);">
+                </div>
+                <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+                    <h2 style="font-size: 2.5rem;">מצוינות רפואית בסטנדרט בינלאומי</h2>
+                    <p>מרכז MEDICAL PRO נוסד מתוך חזון להעניק לכל מטופל חוויה רפואית המשלבת מקצועיות שיא עם יחס אישי וחם. אצלנו לא מחכים חודשים לתור – אנחנו דואגים שתראו רופא תוך ימים ספורים.</p>
+                    <button class="btn btn-primary" style="background: var(--dark);" onclick="showPage('about')">קרא עוד עלינו</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="about" class="page">
+        <div class="section-padding">
+            <h1 data-aos="fade-down">אודות המרכז הרפואי</h1>
+            <p style="font-size: 1.2rem; max-width: 800px;">המרכז שלנו הוקם לפני כעשור במטרה לשנות את פני הרפואה בישראל. אנחנו מאמינים שזמן הוא גורם קריטי בבריאות, ולכן בנינו מערכת המאפשרת אבחון מהיר ויעיל.</p>
+            <div class="grid" style="margin-top: 50px;">
+                <img src="https://cdn.pixabay.com/photo/2017/02/15/10/39/establishment-2068202_1280.jpg" style="width: 100%; border-radius: 20px;">
+                <img src="https://cdn.pixabay.com/photo/2016/11/21/15/51/stethoscope-1846074_1280.jpg" style="width: 100%; border-radius: 20px;">
+            </div>
+            <button class="btn btn-primary" style="margin-top: 40px;" onclick="showPage('home')">חזרה לבית</button>
+        </div>
+    </div>
+
+    <div id="services" class="page">
+        <div class="section-padding">
+            <h1 style="text-align: center;">המחלקות שלנו</h1>
+            <div class="grid" style="margin-top: 50px;">
+                <div class="info-card" data-aos="flip-left">
+                    <i class="fas fa-heart"></i>
+                    <h3>קרדיולוגיה</h3>
+                    <p>בדיקות מאמץ, אקו לב וייעוץ מומחי לב מהשורה הראשונה.</p>
+                </div>
+                <div class="info-card" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fas fa-baby"></i>
+                    <h3>רפואת ילדים</h3>
+                    <p>ליווי רפואי התפתחותי וטיפול במחלות ילדים בסביבה תומכת.</p>
+                </div>
+                <div class="info-card" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fas fa-brain"></i>
+                    <h3>נוירולוגיה</h3>
+                    <p>טיפול ואבחון במערכת העצבים, בעיות קשב וריכוז וכאבי ראש.</p>
+                </div>
+                <div class="info-card" data-aos="flip-left" data-aos-delay="300">
+                    <i class="fas fa-bone"></i>
+                    <h3>אורתופדיה</h3>
+                    <p>מומחי גב, מפרקים ופציעות ספורט מהטובים בארץ.</p>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 40px;" onclick="showPage('home')">חזרה לבית</button>
+        </div>
+    </div>
+
+    <div id="team" class="page">
+        <div class="section-padding">
+            <h1 style="text-align: center;">הכירו את הנבחרת שלנו</h1>
+            <div class="grid" style="margin-top: 50px;">
+                <div class="doctor-card" data-aos="fade-up">
+                    <img src="https://cdn.pixabay.com/photo/2017/01/31/22/32/doctor-2027768_1280.jpg" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>פרופ' שמעון כהן</h3>
+                        <p>מומחה לכירורגיה פלסטית</p>
+                    </div>
+                </div>
+                <div class="doctor-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://cdn.pixabay.com/photo/2017/05/23/10/59/doctor-2336980_1280.jpg" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>ד"ר אילנה לוי</h3>
+                        <p>מומחית לרפואת נשים</p>
+                    </div>
+                </div>
+                <div class="doctor-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://cdn.pixabay.com/photo/2020/03/14/17/05/nurse-4931290_1280.jpg" class="doctor-img">
+                    <div class="doctor-info">
+                        <h3>ד"ר רון מזרחי</h3>
+                        <p>מומחה לרפואת חירום</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 40px;" onclick="showPage('home')">חזרה לבית</button>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <div class="section-padding">
+            <div style="max-width: 600px; margin: 0 auto; background: white; padding: 50px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+                <h2 style="text-align: center;">לקביעת תור / יצירת קשר</h2>
+                <form onsubmit="event.preventDefault(); alert('ההודעה נשלחה בהצלחה! נציג יחזור אליך תוך 15 דקות.');">
+                    <div style="margin-bottom: 20px;">
+                        <label>שם מלא</label>
+                        <input type="text" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;" required>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label>טלפון</label>
+                        <input type="tel" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;" required>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label>מחלקה רלוונטית</label>
+                        <select style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                            <option>קרדיולוגיה</option>
+                            <option>ילדים</option>
+                            <option>אורתופדיה</option>
+                            <option>אבחון כללי</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">שלח בקשה לתור</button>
+                </form>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a onclick="showPage('home')" style="cursor: pointer; color: var(--primary); font-weight: bold;">חזרה לבית</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>MEDICAL PRO</h3>
+                <p>המרכז הרפואי המוביל בישראל למצוינות וחדשנות. שומרים על הבריאות שלכם בכל רגע נתון.</p>
+            </div>
+            <div>
+                <h3>לינקים מהירים</h3>
+                <p onclick="showPage('services')" style="cursor: pointer;">כל השירותים</p>
+                <p onclick="showPage('team')" style="cursor: pointer;">הצוות הרפואי</p>
+            </div>
+            <div>
+                <h3>צרו קשר</h3>
+                <p><i class="fas fa-phone"></i> *1234</p>
+                <p><i class="fas fa-map-marker-alt"></i> רחוב המנור 4, תל אביב</p>
+            </div>
+        </div>
+        <hr style="margin: 40px 0; border: 0; border-top: 1px solid #333;">
+        <p style="text-align: center; opacity: 0.6;">© 2026 כל הזכויות שמורות לטל גזית | TGI webs</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Navigation Function
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+            
+            // Refresh AOS animations for the new page
+            setTimeout(() => {
+                AOS.refresh();
+            }, 100);
+        }
+    </script>
+</body>
+</html>
