@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>מדיקל פרו | מרכז רפואי רב-תחומי</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -20,10 +20,32 @@
         }
 
         * { box-sizing: border-box; }
-        body { font-family: 'Assistant', sans-serif; margin: 0; background: var(--light); color: var(--dark); overflow-x: hidden; }
+        
+        /* תיקון קריטי למניעת בריחה הצידה */
+        html, body { 
+            font-family: 'Assistant', sans-serif; 
+            margin: 0; 
+            padding: 0;
+            background: var(--light); 
+            color: var(--dark); 
+            overflow-x: hidden; 
+            width: 100%;
+        }
 
         /* Navigation */
-        nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 20px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        nav { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+            padding: 15px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            width: 100%;
+        }
         .logo { font-size: 24px; font-weight: 800; color: var(--primary); cursor: pointer; display: flex; align-items: center; gap: 10px; }
         
         .nav-links { display: flex; gap: 20px; }
@@ -31,58 +53,95 @@
         
         .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
 
-        /* Mobile Nav */
+        /* Mobile Nav Fix */
         @media (max-width: 992px) {
             .nav-links { 
-                display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; 
-                background: white; padding: 20px; box-shadow: 0 10px 10px rgba(0,0,0,0.1); text-align: center;
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                right: 0; /* מוודא פריסה מלאה */
+                width: 100%; 
+                background: white; 
+                padding: 20px; 
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1); 
+                text-align: center;
             }
             .nav-links.active { display: flex; }
             .menu-btn { display: block; }
         }
 
         /* Page Management */
-        .page { display: none; min-height: 100vh; }
+        .page { display: none; min-height: 100vh; width: 100%; }
         .page.active { display: block; }
 
-        /* Hero Section */
-        .hero { height: 80vh; background: linear-gradient(135deg, rgba(29,53,87,0.8) 0%, rgba(42,82,190,0.6) 100%), url('pic1.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 20px; }
-        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; line-height: 1.1; }
-        .hero-content p { font-size: clamp(1.1rem, 3vw, 1.5rem); margin: 20px 0 40px; opacity: 0.9; }
+        /* Hero Section Fix */
+        .hero { 
+            height: 85vh; 
+            background: linear-gradient(135deg, rgba(29,53,87,0.8) 0%, rgba(42,82,190,0.6) 100%), url('pic1.jpg') center/cover no-repeat; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            text-align: center; 
+            padding: 20px;
+            width: 100%;
+        }
+        .hero-content { width: 100%; max-width: 800px; }
+        .hero-content h1 { 
+            font-size: clamp(2.2rem, 7vw, 4.5rem); 
+            margin: 0; 
+            line-height: 1.2;
+            word-wrap: break-word; /* מונע מהטקסט לצאת מהמסך */
+        }
+        .hero-content p { 
+            font-size: clamp(1rem, 3vw, 1.5rem); 
+            margin: 15px 0 30px; 
+            opacity: 0.9; 
+            padding: 0 10px;
+        }
 
         /* Buttons */
         .btn { padding: 12px 30px; border-radius: 50px; font-weight: 800; text-decoration: none; transition: 0.4s; cursor: pointer; border: none; font-size: 1.1rem; display: inline-block; }
-        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(42,82,190,0.3); }
 
         /* Sections */
-        .section-padding { padding: 60px 5%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .section-padding { padding: 60px 5%; width: 100%; }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+            width: 100%;
+        }
         
-        .info-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        .info-card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            text-align: center;
+            max-width: 100%; /* מונע בריחה מהגריד */
+        }
         .info-card i { font-size: 3rem; color: var(--secondary); margin-bottom: 15px; }
-
-        /* Doctor Cards */
-        .doctor-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); margin-bottom: 20px; }
-        .doctor-img { width: 100%; height: 300px; object-fit: cover; }
-        .doctor-info { padding: 20px; text-align: center; }
 
         /* Success Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 3000; padding: 20px; }
-        .modal-card { background: white; padding: 30px; border-radius: 25px; text-align: center; max-width: 450px; width: 100%; transform: translateY(20px); transition: 0.3s; }
+        .modal-card { background: white; padding: 30px; border-radius: 25px; text-align: center; max-width: 450px; width: 90%; transform: translateY(20px); transition: 0.3s; }
         .modal-overlay.active { display: flex; }
-        .modal-card i { font-size: 4rem; color: var(--success); margin-bottom: 15px; }
 
-        footer { background: var(--dark); color: white; padding: 60px 5% 30px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        footer { background: var(--dark); color: white; padding: 40px 5%; width: 100%; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
         
         /* Utility */
-        .img-responsive { width: 100%; height: auto; border-radius: 20px; }
-        .flex-container { display: flex; gap: 30px; flex-wrap: wrap; align-items: center; }
-        .flex-item { flex: 1; min-width: 300px; }
+        .img-responsive { width: 100%; height: auto; border-radius: 20px; display: block; }
+        .flex-container { display: flex; gap: 30px; flex-wrap: wrap; align-items: center; width: 100%; }
+        .flex-item { flex: 1; min-width: 300px; max-width: 100%; }
 
         @media (max-width: 600px) {
             .flex-item { min-width: 100%; }
             .section-padding { padding: 40px 5%; }
+            .hero { height: 70vh; }
         }
     </style>
 </head>
@@ -127,7 +186,7 @@
         <section class="section-padding" style="background: white;">
             <div class="flex-container">
                 <div class="flex-item" data-aos="fade-left">
-                    <img src="pic2.jpg" class="img-responsive" style="box-shadow: 15px 15px 0 var(--secondary);">
+                    <img src="pic2.jpg" class="img-responsive" style="box-shadow: 10px 10px 0 var(--secondary);">
                 </div>
                 <div class="flex-item" data-aos="fade-right">
                     <h2>מצוינות רפואית ללא פשרות</h2>
@@ -159,28 +218,29 @@
 
     <div id="successModal" class="modal-overlay">
         <div class="modal-card">
-            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--success); margin-bottom: 15px;"></i>
             <h2>נשלח בהצלחה!</h2>
             <p>תודה על פנייתך. נציג יחזור אליך בתוך זמן קצר.</p>
             <button class="btn btn-primary" onclick="closeModal()">סגור</button>
         </div>
     </div>
 
-    <div id="about" class="page"><div class="section-padding"><h1>אודות</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה</button></div></div>
-    <div id="services" class="page"><div class="section-padding"><h1>שירותים</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה</button></div></div>
-    <div id="team" class="page"><div class="section-padding"><h1>הצוות</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה</button></div></div>
+    <div id="about" class="page"><div class="section-padding"><h1>אודות</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה לבית</button></div></div>
+    <div id="services" class="page"><div class="section-padding"><h1>שירותים ומחלקות</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה לבית</button></div></div>
+    <div id="team" class="page"><div class="section-padding"><h1>הצוות הרפואי</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה לבית</button></div></div>
 
     <footer>
         <div class="footer-grid">
-            <div><h3>MEDICAL PRO</h3><p>מרכז רפואי רב תחומי.</p></div>
+            <div><h3>MEDICAL PRO</h3><p>מרכז רפואי רב תחומי מוביל.</p></div>
             <div><h3>צרו קשר</h3><p>*1234<br>רחוב המנור 4, תל אביב</p></div>
         </div>
-        <p style="text-align: center; margin-top: 40px; opacity: 0.6; font-size: 0.9rem;">© 2026 טל גזית | TGI webs</p>
+        <p style="text-align: center; margin-top: 30px; opacity: 0.6; font-size: 0.8rem;">© 2026 טל גזית | TGI webs</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        // אתחול אנימציות - מבוטל במובייל לשיפור ביצועים אם תרצה
+        AOS.init({ duration: 800, once: true, disable: 'mobile' });
 
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
@@ -188,8 +248,11 @@
 
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            document.getElementById('navLinks').classList.remove('active'); // Close menu on click
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            document.getElementById('navLinks').classList.remove('active');
             window.scrollTo(0, 0);
             setTimeout(() => { AOS.refresh(); }, 100);
         }
