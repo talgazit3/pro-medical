@@ -21,7 +21,6 @@
 
         * { box-sizing: border-box; }
         
-        /* תיקון קריטי למניעת בריחה הצידה */
         html, body { 
             font-family: 'Assistant', sans-serif; 
             margin: 0; 
@@ -32,7 +31,6 @@
             width: 100%;
         }
 
-        /* Navigation */
         nav { 
             background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(10px); 
@@ -47,13 +45,10 @@
             width: 100%;
         }
         .logo { font-size: 24px; font-weight: 800; color: var(--primary); cursor: pointer; display: flex; align-items: center; gap: 10px; }
-        
         .nav-links { display: flex; gap: 20px; }
         .nav-links a { text-decoration: none; color: var(--dark); font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 1rem; }
-        
         .menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
 
-        /* Mobile Nav Fix */
         @media (max-width: 992px) {
             .nav-links { 
                 display: none; 
@@ -61,7 +56,7 @@
                 position: absolute; 
                 top: 100%; 
                 left: 0; 
-                right: 0; /* מוודא פריסה מלאה */
+                right: 0; 
                 width: 100%; 
                 background: white; 
                 padding: 20px; 
@@ -72,11 +67,9 @@
             .menu-btn { display: block; }
         }
 
-        /* Page Management */
-        .page { display: none; min-height: 100vh; width: 100%; }
+        .page { display: none; min-height: 100vh; width: 100%; padding-bottom: 50px; }
         .page.active { display: block; }
 
-        /* Hero Section Fix */
         .hero { 
             height: 85vh; 
             background: linear-gradient(135deg, rgba(29,53,87,0.8) 0%, rgba(42,82,190,0.6) 100%), url('pic1.jpg') center/cover no-repeat; 
@@ -88,60 +81,41 @@
             padding: 20px;
             width: 100%;
         }
-        .hero-content { width: 100%; max-width: 800px; }
-        .hero-content h1 { 
-            font-size: clamp(2.2rem, 7vw, 4.5rem); 
-            margin: 0; 
-            line-height: 1.2;
-            word-wrap: break-word; /* מונע מהטקסט לצאת מהמסך */
-        }
-        .hero-content p { 
-            font-size: clamp(1rem, 3vw, 1.5rem); 
-            margin: 15px 0 30px; 
-            opacity: 0.9; 
-            padding: 0 10px;
-        }
+        .hero-content h1 { font-size: clamp(2.2rem, 7vw, 4.5rem); margin: 0; line-height: 1.2; }
+        .hero-content p { font-size: clamp(1rem, 3vw, 1.5rem); margin: 15px 0 30px; opacity: 0.9; }
 
-        /* Buttons */
         .btn { padding: 12px 30px; border-radius: 50px; font-weight: 800; text-decoration: none; transition: 0.4s; cursor: pointer; border: none; font-size: 1.1rem; display: inline-block; }
         .btn-primary { background: var(--primary); color: white; box-shadow: 0 5px 15px rgba(42,82,190,0.3); }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); margin-top: 20px; }
 
-        /* Sections */
         .section-padding { padding: 60px 5%; width: 100%; }
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; 
-            width: 100%;
-        }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: var(--dark); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
         
-        .info-card { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-            text-align: center;
-            max-width: 100%; /* מונע בריחה מהגריד */
-        }
+        .card { background: white; padding: 0; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; overflow: hidden; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card-img { width: 100%; height: 220px; object-fit: cover; }
+        .card-content { padding: 25px; }
+        .card-content h3 { margin-top: 0; color: var(--primary); }
+
+        .info-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
         .info-card i { font-size: 3rem; color: var(--secondary); margin-bottom: 15px; }
 
-        /* Success Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 3000; padding: 20px; }
-        .modal-card { background: white; padding: 30px; border-radius: 25px; text-align: center; max-width: 450px; width: 90%; transform: translateY(20px); transition: 0.3s; }
+        .modal-card { background: white; padding: 30px; border-radius: 25px; text-align: center; max-width: 450px; width: 90%; }
         .modal-overlay.active { display: flex; }
 
         footer { background: var(--dark); color: white; padding: 40px 5%; width: 100%; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
         
-        /* Utility */
         .img-responsive { width: 100%; height: auto; border-radius: 20px; display: block; }
-        .flex-container { display: flex; gap: 30px; flex-wrap: wrap; align-items: center; width: 100%; }
-        .flex-item { flex: 1; min-width: 300px; max-width: 100%; }
+        .flex-container { display: flex; gap: 40px; flex-wrap: wrap; align-items: center; width: 100%; }
+        .flex-item { flex: 1; min-width: 300px; }
 
         @media (max-width: 600px) {
             .flex-item { min-width: 100%; }
             .section-padding { padding: 40px 5%; }
-            .hero { height: 70vh; }
         }
     </style>
 </head>
@@ -173,25 +147,97 @@
                 <div class="info-card" data-aos="fade-up">
                     <i class="fas fa-user-md"></i>
                     <h3>רופאים מומחים</h3>
-                    <p>מעל 120 רופאים בכירים בכל התחומים.</p>
+                    <p>נבחרת של מעל 120 רופאים בכירים ומנהלי מחלקות.</p>
                 </div>
                 <div class="info-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-ambulance"></i>
-                    <h3>מיון 24/7</h3>
-                    <p>מענה רפואי דחוף ללא הפסקה.</p>
+                    <h3>מיון דחוף</h3>
+                    <p>מענה רפואי מקצועי ומהיר לכל מקרה דחוף, 24 שעות ביממה.</p>
+                </div>
+                <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-microscope"></i>
+                    <h3>טכנולוגיה מתקדמת</h3>
+                    <p>ציוד האבחון והטיפול החדיש ביותר בעולם הרפואה.</p>
                 </div>
             </div>
         </section>
+    </div>
 
-        <section class="section-padding" style="background: white;">
+    <div id="about" class="page">
+        <section class="section-padding">
+            <h2 class="section-title">אודות המרכז</h2>
             <div class="flex-container">
                 <div class="flex-item" data-aos="fade-left">
-                    <img src="pic2.jpg" class="img-responsive" style="box-shadow: 10px 10px 0 var(--secondary);">
+                    <img src="pic2.jpg" class="img-responsive" style="box-shadow: 15px 15px 0 var(--secondary);">
                 </div>
                 <div class="flex-item" data-aos="fade-right">
                     <h2>מצוינות רפואית ללא פשרות</h2>
-                    <p>אנחנו ב-MEDICAL PRO מאמינים בשירות מהיר, אבחון מדויק ויחס אישי לכל מטופל ומטופלת.</p>
-                    <button class="btn btn-primary" onclick="showPage('about')">למידע נוסף</button>
+                    <p>מרכז מדיקל פרו הוקם מתוך חזון להעניק רפואה פרטית באיכות של בית חולים מוביל, עם יחס אישי של קליניקה בוטיק.</p>
+                    <p>אנו מאמינים בשילוב שבין הון אנושי יוצא דופן לבין החדשנות הטכנולוגית המבטיחה את האבחון המדויק ביותר עבורכם.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><i class="fas fa-check-circle" style="color: var(--success);"></i> ליווי אישי מרגע הפנייה</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--success);"></i> הסדרים עם כל חברות הביטוח</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--success);"></i> זמינות תורים גבוהה</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showPage('contact')">דברו איתנו</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="services" class="page">
+        <section class="section-padding">
+            <h2 class="section-title">השירותים שלנו</h2>
+            <div class="grid">
+                <div class="card" data-aos="zoom-in">
+                    <img src="pic3.jpg" class="card-img" alt="אורתופדיה">
+                    <div class="card-content">
+                        <h3>אורתופדיה ופיזיותרפיה</h3>
+                        <p>טיפול בפציעות ספורט, שיקום תנועתי וניתוחי מפרקים מתקדמים.</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="pic4.jpg" class="card-img" alt="קרדיולוגיה">
+                    <div class="card-content">
+                        <h3>קרדיולוגיה מתקדמת</h3>
+                        <p>בדיקות מאמץ, אקו לב וייעוץ מקיף על ידי קרדיולוגים מומחים.</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="pic5.jpg" class="card-img" alt="בדיקות סקר">
+                    <div class="card-content">
+                        <h3>בדיקות סקר תקופתיות</h3>
+                        <p>מניעה היא המפתח. חבילות בדיקות מקיפות המבוצעות ביום אחד.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="team" class="page">
+        <section class="section-padding">
+            <h2 class="section-title">הכירו את המומחים</h2>
+            <div class="grid">
+                <div class="card" data-aos="fade-up">
+                    <img src="pic6.jpg" class="card-img" alt="ד"ר אריה לוי">
+                    <div class="card-content">
+                        <h3>ד"ר אריה לוי</h3>
+                        <p>מומחה לכירורגיה כללית</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="pic7.jpg" class="card-img" alt="ד"ר שרה כהן">
+                    <div class="card-content">
+                        <h3>ד"ר שרה כהן</h3>
+                        <p>מומחית לרפואת ילדים</p>
+                    </div>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div style="height: 220px; background: #eee; display: flex; align-items: center; justify-content: center;"><i class="fas fa-user-md fa-4x" style="color: #ccc;"></i></div>
+                    <div class="card-content">
+                        <h3>ד"ר דוד מזרחי</h3>
+                        <p>נוירולוג בכיר</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -199,18 +245,28 @@
 
     <div id="contact" class="page">
         <div class="section-padding">
-            <div style="max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                <h2 style="text-align: center;">השאירו פרטים</h2>
+            <div style="max-width: 500px; margin: 0 auto; background: white; padding: 40px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <h2 style="text-align: center; margin-bottom: 30px;">קביעת תור מהיר</h2>
                 <form onsubmit="handleFormSubmit(event)">
-                    <div style="margin-bottom: 15px;">
-                        <label>שם מלא</label>
-                        <input type="text" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;" required>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 700;">שם מלא</label>
+                        <input type="text" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; background: var(--light);" required>
                     </div>
-                    <div style="margin-bottom: 15px;">
-                        <label>טלפון</label>
-                        <input type="tel" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;" required>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 700;">מספר טלפון</label>
+                        <input type="tel" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; background: var(--light);" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">שלח הודעה</button>
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 700;">מחלקה מבוקשת</label>
+                        <select style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; background: var(--light);">
+                            <option>בחר מחלקה...</option>
+                            <option>אורתופדיה</option>
+                            <option>קרדיולוגיה</option>
+                            <option>רפואת ילדים</option>
+                            <option>אחר</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">שלח בקשה לתור</button>
                 </form>
             </div>
         </div>
@@ -218,28 +274,38 @@
 
     <div id="successModal" class="modal-overlay">
         <div class="modal-card">
-            <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--success); margin-bottom: 15px;"></i>
-            <h2>נשלח בהצלחה!</h2>
-            <p>תודה על פנייתך. נציג יחזור אליך בתוך זמן קצר.</p>
-            <button class="btn btn-primary" onclick="closeModal()">סגור</button>
+            <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--success); margin-bottom: 20px;"></i>
+            <h2>הבקשה התקבלה!</h2>
+            <p>נציג מהמחלקה הרלוונטית יחזור אליך טלפונית לתיאום סופי בתוך שעה.</p>
+            <button class="btn btn-primary" onclick="closeModal()">חזרה לדף הבית</button>
         </div>
     </div>
 
-    <div id="about" class="page"><div class="section-padding"><h1>אודות</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה לבית</button></div></div>
-    <div id="services" class="page"><div class="section-padding"><h1>שירותים ומחלקות</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה לבית</button></div></div>
-    <div id="team" class="page"><div class="section-padding"><h1>הצוות הרפואי</h1><button class="btn btn-primary" onclick="showPage('home')">חזרה לבית</button></div></div>
-
     <footer>
         <div class="footer-grid">
-            <div><h3>MEDICAL PRO</h3><p>מרכז רפואי רב תחומי מוביל.</p></div>
-            <div><h3>צרו קשר</h3><p>*1234<br>רחוב המנור 4, תל אביב</p></div>
+            <div>
+                <h3 style="color: var(--secondary);">MEDICAL PRO</h3>
+                <p>המרכז הרפואי המוביל בישראל לשירותי רפואה דחופים וייעוץ מומחים.</p>
+            </div>
+            <div>
+                <h3>ניווט מהיר</h3>
+                <p onclick="showPage('about')" style="cursor:pointer">אודות</p>
+                <p onclick="showPage('services')" style="cursor:pointer">שירותים</p>
+                <p onclick="showPage('contact')" style="cursor:pointer">צור קשר</p>
+            </div>
+            <div>
+                <h3>צרו קשר</h3>
+                <p><i class="fas fa-phone"></i> *1234</p>
+                <p><i class="fas fa-map-marker-alt"></i> רחוב המנור 4, תל אביב</p>
+            </div>
         </div>
-        <p style="text-align: center; margin-top: 30px; opacity: 0.6; font-size: 0.8rem;">© 2026 טל גזית | TGI webs</p>
+        <p style="text-align: center; margin-top: 40px; opacity: 0.5; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            © 2026 טל גזית | TGI webs. כל הזכויות שמורות.
+        </p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // אתחול אנימציות - מבוטל במובייל לשיפור ביצועים אם תרצה
         AOS.init({ duration: 800, once: true, disable: 'mobile' });
 
         function toggleMenu() {
@@ -249,11 +315,12 @@
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
+            if (targetPage) targetPage.classList.add('active');
+            
             document.getElementById('navLinks').classList.remove('active');
             window.scrollTo(0, 0);
+            
+            // רענון אנימציות AOS עבור הדף החדש
             setTimeout(() => { AOS.refresh(); }, 100);
         }
 
