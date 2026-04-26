@@ -200,14 +200,33 @@
         }
         .footer-section h3 { color: var(--secondary); font-size: 1.4rem; margin-bottom: 20px; font-weight: 800; }
         .footer-section p { margin: 10px 0; opacity: 0.8; line-height: 1.6; }
+
         .copyright {
             text-align: center; 
             margin-top: 50px; 
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
         .copyright span { color: var(--secondary); font-weight: 700; }
+        
+        .tgi-webs-logo-link {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .tgi-webs-logo-link:hover {
+            transform: scale(1.1);
+        }
+        .tgi-webs-logo-img {
+            max-height: 45px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
 
         .img-responsive { width: 100%; height: auto; border-radius: 20px; display: block; transition: 0.5s; }
         .flex-container { display: flex; gap: 40px; flex-wrap: wrap; align-items: center; width: 100%; }
@@ -305,7 +324,6 @@
                     </div>
                 </div>
                 <div class="card" data-aos="fade-up" data-aos-delay="300">
-                    
                     <div class="card-content">
                         <h3>בדיקות סקר תקופתיות</h3>
                         <p>מניעה היא המפתח. חבילות בדיקות מקיפות המבוצעות ביום אחד.</p>
@@ -334,11 +352,12 @@
                     </div>
                 </div>
                  <div class="card" data-aos="zoom-in-up" data-aos-delay="300">
-                    <img src="pic5.jpg" class="card-img" alt="ד"ר שרה כהן">
+                    <img src="pic5.jpg" class="card-img" alt="ד"ר דוד שמירהו">
                     <div class="card-content">
                         <h3>ד"ר דוד שמירהו</h3>
                         <p>מומחה גסטרוסקופיה</p>
                     </div>
+                </div>
             </div>
         </section>
     </div>
@@ -390,7 +409,11 @@
             </div>
         </div>
         <div class="copyright">
-            <p>© 2026 כל הזכויות שמורות ל-<span>MEDICAL PRO</span> | עוצב ונבנה ע"י <span>TGI webs</span></p>
+            <p>© 2026 כל הזכויות שמורות ל-<span>MEDICAL PRO</span></p>
+            <p style="opacity: 0.7; margin-bottom: 5px;">עוצב ונבנה ע"י:</p>
+            <a href="https://tgiwebs.netlify.app" target="_blank" class="tgi-webs-logo-link">
+                <img src="image_558c3c.png" alt="TGI webs" class="tgi-webs-logo-img">
+            </a>
         </div>
     </footer>
 
